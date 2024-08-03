@@ -1,3 +1,8 @@
+# My Blog Diagram
+
+## User Submits Blog Post
+
+```mermaid
 graph TD
     A[User Submits Form] --> B[API Route /api/submit]
     B --> C{Validate Input}
