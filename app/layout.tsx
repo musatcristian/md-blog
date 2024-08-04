@@ -5,7 +5,13 @@ export default function RootLayout({
   }) {
     return (
       <html lang="en">
-        <body>{children}</body>
+
+        <body>
+          <header>This is the app header</header>
+          {children}
+          <footer>This is the app footer</footer>
+          
+          </body>
       </html>
     )
 }                     
