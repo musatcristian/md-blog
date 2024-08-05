@@ -1,10 +1,11 @@
-import { Blog } from "../types";
+import B from "@/components/Blog";
+import { Blog } from "@/types/blog";
 
 const fetchMockBlogs = async (): Promise<Blog[]> => {
   try {
     const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
       cache: "force-cache",
-      next: { revalidate: 3600 },
+      next: { revalidate: 3600, tags: ["blogs"] },
     });
 
     return response.json();
@@ -18,14 +19,7 @@ export default async function Page() {
   const blogs = await fetchMockBlogs();
 
   const list = blogs.slice(0, 5).map((b) => {
-    return (
-      <div>
-        <h4>
-          {b.title} by {b.userId}
-        </h4>
-        <p>{b.body}</p>
-      </div>
-    );
+    return <B key={b.id} {...b} />;
   });
 
   return list;
